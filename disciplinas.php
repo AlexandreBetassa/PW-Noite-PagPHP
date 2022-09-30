@@ -50,7 +50,7 @@ include "./cabecalho.php";
                 <td><button type="button" class="btn btn-warning">Editar</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger">Excluir</button></td>
             </tr>
         </tbody>
-        <?php } ?>
+        <?php  }?>
         </table>
 </div>
 
