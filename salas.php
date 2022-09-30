@@ -24,34 +24,44 @@ include "./cabecalho.php";
             </div>
         </div>
     </div>
-    <table class="table table-striped table-hover">
-        <thead>  
+    <table class="table table-striped table-light">
+        <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Sigla</th>
-                <th scope="col">Apelido</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Bloco</th>
+                <th scope="col">Capacidade</th>
+                <th scope="col">Numero</th>
+                <th scope="col">Permitir Reserva</th>
+                <th scope="col">Equipamentos na sala</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <?php
 
-        $materias = array('Administração Geral', 'Padrões de Projeto de Sítios Internet II', 'Pesquisa Operacional', 'Planejamento Estrategico', 'Portugûes', 'Pratica de Design', 'Pratica de Gestão de Projetos');
-        $apelidos = array('ADM', 'P PROJ S INT II', 'PO', 'PLAN ESTRAT', 'PORT', 'PRAT DESIGN', 'PRAT G PROJET');
+        $salas = file_get_contents("https://reserva.fatectq.edu.br/api/salas/");
+        $salas = json_decode($salas, true);
 
-        for($id = 0; $id < 7; $id++) {
-        ?>        
-        <tbody>
-            <tr>
-                <th scope="row"><?php echo $id+1 ?></th>
-                <td><?php echo $materias[$id]?></td>
-                <td></td>
-                <td><?php echo $apelidos[$id]?></td>
-                <td><button type="button" class="btn btn-warning">Editar</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger">Excluir</button></td>
-            </tr>
-        </tbody>
-        <?php } ?>
-        </table>
+        for ($i = 0; $i < count($salas); $i++) {
+        ?>
+            <tbody>
+                <tr>
+                    <th scope="row"><?php echo $salas[$i]["salaId"] ?></th>
+                    <td><?php echo $salas[$i]["nome"] ?></td>
+                    <td><?php echo $salas[$i]["descricao"] ?></td>
+                    <td><?php echo $salas[$i]["bloco"] ?></td>
+                    <td><?php echo $salas[$i]["capacidade"] ?></td>
+                    <td><?php echo $salas[$i]["numero"] ?></td>
+                    <td><?php echo $salas[$i]["permitirReserva"] ?></td>
+                    <td><?php echo $salas[$i]["equipamentosSala"] ?></td>
+
+                    <td><button type="button" class="btn btn-warning">Editar</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger">Excluir</button></td>
+                </tr>
+            </tbody>
+        <?php  } ?>
+    </table>
+</div>
 </div>
 
 <?php

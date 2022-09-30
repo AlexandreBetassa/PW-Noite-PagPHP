@@ -24,37 +24,40 @@ include "./cabecalho.php";
             </div>
         </div>
     </div>
-    <table class="table table-striped table-hover">
-        <thead>  
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Sigla</th>
-                <th scope="col">Apelido</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <?php
 
-        $materias = array('Administração Geral', 'Padrões de Projeto de Sítios Internet II', 'Pesquisa Operacional', 'Planejamento Estrategico', 'Portugûes', 'Pratica de Design', 'Pratica de Gestão de Projetos');
-        $apelidos = array('ADM', 'P PROJ S INT II', 'PO', 'PLAN ESTRAT', 'PORT', 'PRAT DESIGN', 'PRAT G PROJET');
+    <?php
+    $disciplinas = file_get_contents("https://reserva.fatectq.edu.br/api/disciplinas/");
+    $disciplinas = json_decode($disciplinas, true);
+    ?>
+    <div>
+        <table class="table table-striped table-hover table-light">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sigla</th>
+                    <th scope="col">Apelido</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <?php
+            for ($i = 0; $i < count($disciplinas); $i++) {
+            ?>
+                <tbody>
+                    <tr>
+                        <th scope="row"><?php echo $disciplinas[$i]["disciplinaId"] ?></th>
+                        <td><?php echo $disciplinas[$i]["nome"] ?></td>
+                        <td><?php echo $disciplinas[$i]["sigla"] ?></td>
+                        <td><?php echo $disciplinas[$i]["apelido"] ?></td>
 
-        for($id = 0; $id < 7; $id++) {
-        ?>        
-        <tbody>
-            <tr>
-                <th scope="row"><?php echo $id+1 ?></th>
-                <td><?php echo $materias[$id]?></td>
-                <td></td>
-                <td><?php echo $apelidos[$id]?></td>
-                <td><button type="button" class="btn btn-warning">Editar</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger">Excluir</button></td>
-            </tr>
-        </tbody>
-        <?php  }?>
+                        <td><button type="button" class="btn btn-warning">Editar</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger">Excluir</button></td>
+                    </tr>
+                </tbody>
+            <?php  } ?>
         </table>
-</div>
+    </div>
 
 
-<?php
-include "./rodape.php"
-?>
+    <?php
+    include "./rodape.php"
+    ?>
