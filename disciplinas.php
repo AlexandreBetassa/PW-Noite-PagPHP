@@ -24,38 +24,34 @@ include "./cabecalho.php";
             </div>
         </div>
     </div>
-    <table class="table table-striped align-middle table-hover">
-        <thead>
+    <table class="table table-striped table-hover">
+        <thead>  
             <tr>
-                <th scope="col">ID</th>
+                <th scope="col">Id</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Sigla</th>
                 <th scope="col">Apelido</th>
                 <th scope="col"></th>
-                <th scope="col"></th>
             </tr>
         </thead>
-        <tbody class="col-12 justify-content-space-around">
-            <tr>
-                <td class="col-2">1</td>
-                <td class="col-4">Administração</td>
-                <td class="col-2"></td>
-                <td class="col-2">ADM GERAL</td>
-                <td class="col-1"><button type="button" class="btn btn-warning">Editar</button></td>
-                <td class="col-1"><button type="button" class="btn btn-danger">Excluir</button>
-            </tr>
+        <?php
 
+        $materias = array('Administração Geral', 'Padrões de Projeto de Sítios Internet II', 'Pesquisa Operacional', 'Planejamento Estrategico', 'Portugûes', 'Pratica de Design', 'Pratica de Gestão de Projetos');
+        $apelidos = array('ADM', 'P PROJ S INT II', 'PO', 'PLAN ESTRAT', 'PORT', 'PRAT DESIGN', 'PRAT G PROJET');
+
+        for($id = 0; $id < 7; $id++) {
+        ?>        
+        <tbody>
             <tr>
-                <td class="col-2">2</td>
-                <td class="col-4">Padrões de Projeto de Sítios Internet II</td>
-                <td class="col-2"></td>
-                <td class="col-2">P Proj S INT II</td>
-                <td class="col-1"><button type="button" class="btn btn-warning">Editar</button></td>
-                <td class="col-1"><button type="button" class="btn btn-danger">Excluir</button>
-                </td>
+                <th scope="row"><?php echo $id+1 ?></th>
+                <td><?php echo $materias[$id]?></td>
+                <td></td>
+                <td><?php echo $apelidos[$id]?></td>
+                <td><button type="button" class="btn btn-warning">Editar</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger">Excluir</button></td>
             </tr>
         </tbody>
-    </table>
+        <?php } ?>
+        </table>
 </div>
 
 
