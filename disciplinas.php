@@ -15,10 +15,10 @@ include "./cabecalho.php";
                         <button type="btnNovaDisciplina" class="btn btn-success">Nova Disciplina</button>
                     </div>
                     <div class="col-4">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input name="pesquisa" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
                     <div class="col-4">
-                        <a href="#" class="btn btn-primary">Pesquisar</a>
+                        <a class="btn btn-primary">Pesquisar</a>
                     </div>
                 </div>
             </div>

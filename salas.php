@@ -31,10 +31,10 @@ include "./cabecalho.php";
                 <th scope="col">Nome</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Bloco</th>
-                <th scope="col">Capacidade</th>
-                <th scope="col">Numero</th>
-                <th scope="col">Permitir Reserva</th>
-                <th scope="col">Equipamentos na sala</th>
+                <th scope="col text-center">Capacidade</th>
+                <th scope="col text-center">Numero</th>
+                <th scope="col text-center">Permitir Reserva</th>
+                <th scope="col text-center">Equipamentos na sala</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -45,15 +45,15 @@ include "./cabecalho.php";
 
         for ($i = 0; $i < count($salas); $i++) {
         ?>
-            <tbody>
+            <tbody >
                 <tr>
                     <th scope="row"><?php echo $salas[$i]["salaId"] ?></th>
                     <td><?php echo $salas[$i]["nome"] ?></td>
                     <td><?php echo $salas[$i]["descricao"] ?></td>
                     <td><?php echo $salas[$i]["bloco"] ?></td>
-                    <td><?php echo $salas[$i]["capacidade"] ?></td>
-                    <td><?php echo $salas[$i]["numero"] ?></td>
-                    <td><?php echo $salas[$i]["permitirReserva"] ?></td>
+                    <td class="text-center"><?php echo $salas[$i]["capacidade"] ?></td>
+                    <td class="text-center"><?php echo $salas[$i]["numero"] ?></td>
+                    <td class="text-center"><?php if($salas[$i]["permitirReserva"]==1) echo "Sim"; else echo "Não" ?></td>
                     <td><?php echo $salas[$i]["equipamentosSala"] ?></td>
 
                     <td><button type="button" class="btn btn-warning">Editar</button>&nbsp&nbsp&nbsp<button type="button" class="btn btn-danger">Excluir</button></td>
